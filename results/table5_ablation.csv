@@ -1,0 +1,8 @@
+Feature Set,#Features,"Test Macro-F1 (no PCA, %)","Test Macro-F1 (PCA, %)",Test Accuracy (%)
+Color only,57,94.66,94.66,95.7
+Texture only,22,63.08,63.08,68.86
+Shape only,8,39.43,39.43,40.79
+Color + Texture,79,96.65,96.49,96.9
+Color + Shape,65,95.68,95.68,96.41
+Texture + Shape,30,77.93,77.93,80.65
+All (Color + Texture + Shape),87,97.12,97.04,97.42

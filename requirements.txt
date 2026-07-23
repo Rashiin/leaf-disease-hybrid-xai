@@ -1,0 +1,19 @@
+# Environment in which the scripts in src/ were last verified.
+#
+# The manuscript's own runs used Python 3.9.12 (see the notebook metadata in
+# notebooks/leaf_disease_pipeline.ipynb).  The pinned versions below are the
+# ones used to re-verify every script in this repository; see the
+# "Reproduction notes" section of README.md for the tolerances that apply.
+
+numpy>=1.21
+pandas>=1.3
+scikit-learn>=1.0
+scipy>=1.7
+matplotlib>=3.4
+
+# Only needed if you regenerate the handcrafted features from the raw images
+# with the notebook (the feature CSVs ship with this repository, so the
+# scripts in src/ do not require these):
+# opencv-python>=4.5
+# scikit-image>=0.19
+# kagglehub>=0.2
