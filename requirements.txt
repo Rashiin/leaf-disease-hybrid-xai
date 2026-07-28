@@ -1,19 +1,33 @@
 # Environment in which the scripts in src/ were last verified.
 #
-# The manuscript's own runs used Python 3.9.12 (see the notebook metadata in
-# notebooks/leaf_disease_pipeline.ipynb).  The pinned versions below are the
-# ones used to re-verify every script in this repository; see the
-# "Reproduction notes" section of README.md for the tolerances that apply.
+# Two environments matter here and they are not the same one:
+#
+#   1. The manuscript's own runs used Python 3.9.12 with the library stack
+#      recorded in the notebook metadata of
+#      notebooks/leaf_disease_pipeline.ipynb.  Every number printed in the
+#      paper comes from that environment.
+#
+#   2. The pinned stack below is the one in which every script in src/ was
+#      re-verified end to end.  It is newer, and it does not reproduce the
+#      paper bit for bit.  The "Reproduction notes" section of README.md
+#      lists exactly which quantities move, by how much, and why.
+#
+# Pinning the second stack is deliberate: it lets a reader reproduce a known
+# state rather than whatever resolves on the day they clone the repository.
+# Loosen the pins if you need a different Python; the tolerances in the
+# README are the ones that apply.
+#
+# Requires Python >= 3.10 (this stack does not build on 3.9).
 
-numpy>=1.21
-pandas>=1.3
-scikit-learn>=1.0
-scipy>=1.7
-matplotlib>=3.4
+numpy==2.4.4
+pandas==3.0.2
+scikit-learn==1.8.0
+scipy==1.17.1
+matplotlib==3.10.8
 
 # Only needed if you regenerate the handcrafted features from the raw images
 # with the notebook (the feature CSVs ship with this repository, so the
 # scripts in src/ do not require these):
-# opencv-python>=4.5
-# scikit-image>=0.19
-# kagglehub>=0.2
+# opencv-python==4.11.0.86
+# scikit-image==0.25.2
+# kagglehub==0.3.12
