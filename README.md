@@ -43,11 +43,15 @@ python src/run_ablation.py     # Table 5
 python src/run_fusion.py       # Table 3, Table 4 (fusion), Section 3.4, Figures 2-3
 python src/run_selective.py    # Table 9, Figure 4  (Section 3.9)
 python src/run_stability.py    # Table 8            (Section 3.8)
+python src/run_plateau.py      # Section 3.4 plateau sweep
+python src/run_calibration_check.py   # Table 10           (Section 3.10)
 ```
 
 The first four scripts take a few minutes each on a single CPU core.
-`run_stability.py` fits four SVMs on each of ten re-splits and takes
-considerably longer; use `--splits 3` for a quick check.
+`run_plateau.py` trains the three experts once and then evaluates 4,000
+Dirichlet weightings, so it finishes in a few minutes too. `run_stability.py`
+and `run_calibration_check.py` refit the experts on each of ten re-splits and
+take considerably longer; both accept `--splits 3` for a quick check.
 
 ## Experimental configuration
 
@@ -103,6 +107,32 @@ conclusions it supports — that the single reported split is not an outlier,
 that the optimized fusion beats the uniform control, and that the effective
 contribution recovers the ablation ordering far more reliably than the raw
 coefficients — reproduce.
+
+**The two attribution counts move by one split between environments.**
+Section 3.8 reports that the raw coefficients recover the ablation ordering
+in 3 of the 10 re-splits and the effective contribution in 8 of 10, with mean
+Spearman correlations of 0.65 and 0.90 against the single-group Macro-F1
+scores. Those figures come from the manuscript's own environment. Re-running
+`run_calibration_check.py` on the pinned stack of `requirements.txt` gives 4
+of 10 and 10 of 10, with correlations of 0.60 and 1.00. The cause is the
+plateau described in the previous note: the search lands on a different point
+of it, and near the edges of the plateau the *ordering* of the raw
+coefficients flips. We report the manuscript's figures because they are the
+ones the paper was written from, and because they are the more conservative
+of the two -- the newer stack makes the effective contribution look better,
+not worse. Expect these two counts to vary by roughly one split; the gap
+between the two attributions does not.
+
+**Reproduces exactly, on the pinned stack.** `run_plateau.py` returns 183 of
+4,000 candidates within 0.2 Macro-F1 points of the search optimum, with the
+raw coefficients recovering the ablation ordering on 24.6% of them and the
+effective contribution on 81.4% (Section 3.4 quotes 25% and 81%); the rates
+at tolerances of 0.1 and 0.5 points are 18.4/84.2% and 37.3/64.7% against the
+quoted 18/84% and 37/65%. `run_calibration_check.py` returns the fitted
+temperatures of Table 10 (color 0.804 +/- 0.021, texture 0.906 +/- 0.011,
+shape 0.939 +/- 0.017), the same calibration errors and posterior sharpness
+to three decimal places, and the same three-thousandth closing of the
+sharpness gap (0.523 -> 0.520).
 
 ## Data
 
