@@ -1,0 +1,11 @@
+{
+  "python": "3.10.10",
+  "platform": "macOS-26.1-arm64-arm-64bit",
+  "processor": "arm",
+  "torch": "2.14.0",
+  "torchvision": "0.29.0",
+  "numpy": "2.2.6",
+  "sklearn": "1.7.2",
+  "opencv": "5.0.0",
+  "device": "mps"
+}

@@ -1,0 +1,2 @@
+n_images,decode_ms,color_ms,texture_ms,shape_ms,features_ms,svm_single_ms,svm_batched_ms,end_to_end_single_ms,end_to_end_batched_ms
+200,0.404,1.566,7.397,0.193,9.156,0.73,0.469,10.29,10.029

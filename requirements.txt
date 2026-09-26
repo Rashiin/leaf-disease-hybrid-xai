@@ -31,3 +31,9 @@ matplotlib==3.10.8
 # opencv-python==4.11.0.86
 # scikit-image==0.25.2
 # kagglehub==0.3.12
+
+# Only needed for src/deep/ (MobileNetV2 baseline and mixture of deep experts) and
+# extract_background_control.py, which read the raw images:
+# torch
+# torchvision
+# opencv-python

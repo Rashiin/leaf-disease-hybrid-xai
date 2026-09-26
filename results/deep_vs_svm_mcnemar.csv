@@ -1,0 +1,2 @@
+svm_accuracy,deep_accuracy,svm_right_deep_wrong,deep_right_svm_wrong,mcnemar_p
+97.42,99.61,9,77,1.3410593627535848e-14

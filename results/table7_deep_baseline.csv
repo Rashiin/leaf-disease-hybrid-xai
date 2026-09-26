@@ -1,0 +1,2 @@
+model,augmentation,epochs,val_accuracy,val_macro_f1,test_accuracy,test_macro_f1,parameters,size_mb,train_minutes,cpu_ms_single,cpu_ms_batched
+MobileNetV2 (ImageNet init),off,10,99.55,99.51,99.61,99.48,2243087,8.6,21.33,11.64,10.48
